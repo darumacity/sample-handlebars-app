@@ -9,6 +9,6 @@
 `git push -u origin master`
 
 ### DB作成
-`create database `blog`;`  
+``create database `blog`;``  
 `create user 'blog_user'@'localhost' identified with mysql_native_password by 'password';`  
-`grant all on `blog`.* to 'blog_user'@'localhost';`
+``grant all on `blog`.* to 'blog_user'@'localhost';``
