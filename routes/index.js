@@ -9,14 +9,14 @@ var connection = mysql.createConnection({
   database: 'blog',
 })
 
-router.get('/', function (req, res, next) {
-  connection.query('select EntryId as id, Title as title, Description as description, Image as image from entries', function (error, results, fields) {
+router.get('/', (req, res, next) => {
+  connection.query('select EntryId as id, Title as title, Description as description, Image as image from entries', (error, results, fields) => {
     res.render('entries/index', { entries: results });
   });
 });
 
-router.get('/entries/:id', function (req, res, next) {
-  connection.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], function (error, results, fields) {
+router.get('/entries/:id', (req, res, next) => {
+  connection.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], (error, results, fields) => {
 
     if (results.length === 0) {
       res.send(404);
