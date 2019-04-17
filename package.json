@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./bin/www",
-    "build": "node node_modules\\webpack\\bin\\webpack.js --mode development"
+    "build": "node node_modules/webpack/bin/webpack.js --mode development"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
