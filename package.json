@@ -15,7 +15,8 @@
     "jquery": "^3.3.1",
     "marked": "^0.6.1",
     "morgan": "~1.9.0",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "pg": "^7.10.0"
   },
   "devDependencies": {
     "expose-loader": "^0.7.5",
