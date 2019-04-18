@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
 
 var { Client } = require('pg');
 var client = new Client(process.env.DATABASE_URL);
+console.log(process.env.DATABASE_URL);
 
 client.connect();
 
@@ -19,6 +20,7 @@ router.get('/', (req, res, next) => {
     res.render('entries/index', { entries: results });
   }); */
   client.query('select EntryId as id, Title as title, Description as description, Image as image from entries', (error, results, fields) => {
+    console.log(results);
     res.render('entries/index', { entries: results });
   });
 });
@@ -40,6 +42,7 @@ router.get('/entries/:id', (req, res, next) => {
       return;
     }
 
+    console.log(results[0]);
     res.render('entries/detail', results[0]);
   });
 });
