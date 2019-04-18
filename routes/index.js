@@ -35,11 +35,11 @@ router.get('/entries/:id', (req, res, next) => {
   
       res.render('entries/detail', results[0]);
     }); */
-  client.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], (error, results, fields) => {
+  client.query('select Title as title, Content as content from entries where EntryId = $1', [req.params.id], (error, results, fields) => {
 
     console.log(results);
 
-    if (results.rows.length === 0) {
+    if (results.rowCount === 0) {
       res.send(404);
       return;
     }
