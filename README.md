@@ -14,6 +14,7 @@
 ``grant all on `blog`.* to 'blog_user'@'localhost';``
 
 ### Heroku上のPostgresqlをローカルにコピー
+`heroku pg:backup capture -a darumacity-blog`  
 `heroku pg:backups public-url b004 --app darumacity-blog`  
 `curl -o latest.dump $(heroku pg:backups public-url b004 --app darumacity-blog)`  
 `createdb dbname`  
