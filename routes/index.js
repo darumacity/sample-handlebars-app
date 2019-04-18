@@ -10,13 +10,7 @@ var connection = mysql.createConnection({
 }); */
 
 var { Client } = require('pg');
-var client = new Client({
-  user: 'wxkpnabqaymczd',
-  host: 'ec2-174-129-208-118.compute-1.amazonaws.com',
-  database: 'dfdiaavuj0t86e',
-  password: '3311b79094a7a19a47739f6a7ef4e54493099885529e084c8d1b3e9e8a5f643a',
-  port: 5432,
-});
+var client = new Client(process.env.DATABASE_URL);
 
 client.connect();
 
