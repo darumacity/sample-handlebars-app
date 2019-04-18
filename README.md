@@ -12,3 +12,9 @@
 ``create database `blog`;``  
 `create user 'blog_user'@'localhost' identified with mysql_native_password by 'password';`  
 ``grant all on `blog`.* to 'blog_user'@'localhost';``
+
+### Heroku上のPostgresqlをローカルにコピー
+`heroku pg:backups public-url b004 --app darumacity-blog`  
+`curl -o latest.dump $(heroku pg:backups public-url b004 --app darumacity-blog)`  
+`createdb dbname`  
+`pg_restore --verbose --clean --no-acl --no-owner -h localhost -d dbname latest.dump`
