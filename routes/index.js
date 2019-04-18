@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
   }); */
   client.query('select EntryId as id, Title as title, Description as description, Image as image from entries', (error, results, fields) => {
     console.log(results);
-    res.render('entries/index', { entries: results });
+    res.render('entries/index', { entries: results.rows });
   });
 });
 
@@ -37,13 +37,13 @@ router.get('/entries/:id', (req, res, next) => {
   }); */
   client.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], (error, results, fields) => {
 
-    if (results.length === 0) {
+    if (results.rowCount === 0) {
       res.send(404);
       return;
     }
 
     console.log(results[0]);
-    res.render('entries/detail', results[0]);
+    res.render('entries/detail', results.rows[0]);
   });
 });
 
