@@ -16,9 +16,9 @@ console.log(process.env.DATABASE_URL);
 client.connect();
 
 router.get('/', (req, res, next) => {
-/*   connection.query('select EntryId as id, Title as title, Description as description, Image as image from entries', (error, results, fields) => {
-    res.render('entries/index', { entries: results });
-  }); */
+  /*   connection.query('select EntryId as id, Title as title, Description as description, Image as image from entries', (error, results, fields) => {
+      res.render('entries/index', { entries: results });
+    }); */
   client.query('select EntryId as id, Title as title, Description as description, Image as image from entries', (error, results, fields) => {
     console.log(results);
     res.render('entries/index', { entries: results.rows });
@@ -26,23 +26,24 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/entries/:id', (req, res, next) => {
-/*   connection.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], (error, results, fields) => {
-
-    if (results.length === 0) {
-      res.send(404);
-      return;
-    }
-
-    res.render('entries/detail', results[0]);
-  }); */
+  /*   connection.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], (error, results, fields) => {
+  
+      if (results.length === 0) {
+        res.send(404);
+        return;
+      }
+  
+      res.render('entries/detail', results[0]);
+    }); */
   client.query('select Title as title, Content as content from entries where EntryId = ?', [req.params.id], (error, results, fields) => {
 
-    if (results.rowCount === 0) {
+    console.log(results);
+
+    if (results.rows.length === 0) {
       res.send(404);
       return;
     }
 
-    console.log(results[0]);
     res.render('entries/detail', results.rows[0]);
   });
 });
